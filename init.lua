@@ -82,3 +82,21 @@ vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', {})
 require('lualine').setup({
   options = { theme = 'dracula' }
 })
+
+
+-- Configure Custom KeyMappings
+local map = vim.keymap.set
+
+-- By default, Ctrl-BS is mapped to Ctrl-h. The below command maps C-h (or in turn C-BS) to C-w (which is by default used to clear text before the curson in insert mode).
+map("i", "<C-h>", "<C-w>", { desc = "Ctrl+BackSpace in i mode", remap = true })
+map("n", "<C-h>", "a<C-w>", { desc = "Ctrl+Backspace in n mode", remap = true })
+
+-- Remapping Ctrl Delete
+map("n", "<C-Del>", "dw", { desc = "Ctrl-Delete in normal mode", remap = true })
+map("i", "<C-Del>", "<C-o>dw", { desc = "Ctrl-Delete in insert mode", remap = true })
+
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = false -- Pressing the TAB key will NOT insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+vim.wo.relativenumber = true
